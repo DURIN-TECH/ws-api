@@ -31,4 +31,10 @@ public class DappController {
     private Optional<Dapp> getDapp(@PathVariable String name){
         return dappRepository.findDappByName(name.toLowerCase());
     }
+    
+    @DeleteMapping("/{id}")
+    private String deleteDapp (@PathVariable("id) BigInteger id) {
+            dappRepository.deleteById(id);
+            return "dapp "+id+" deleted sucessfully";
+     }                                         
 }
