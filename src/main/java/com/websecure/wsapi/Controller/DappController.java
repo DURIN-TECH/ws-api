@@ -33,8 +33,8 @@ public class DappController {
     }
     
     @DeleteMapping("/{id}")
-    private String deleteDapp (@PathVariable("id) BigInteger id) {
+    private String deleteDapp (@PathVariable("id") BigInteger id) {
             dappRepository.deleteById(id);
-            return "dapp "+id+" deleted sucessfully";
+            return "dapp with"+id+" deleted sucessfully";
      }                                         
 }
