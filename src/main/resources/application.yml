@@ -1,0 +1,24 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
+info:
+  app:
+    version: '1.0'
+    name: WebSecure
+    description: Strictly Secures Every Client Data
+spring:
+  data:
+    mongodb:
+      auto-index-creation: 'true'
+      authentication-database: admin
+      database: WebSecure
+      port: '27017'
+      host: localhost
+server:
+  error:
+    include-stacktrace: never

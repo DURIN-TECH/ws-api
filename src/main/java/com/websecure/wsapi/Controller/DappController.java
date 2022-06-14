@@ -30,14 +30,16 @@ public class DappController {
     @GetMapping("/{name}")
     public ResponseEntity<Object> getDapp(@PathVariable String name){
         Dapp dapp = dappRepository.findDappByNameIgnoreCase(name)
-                                            .orElseThrow(() -> new ResourceNotFoundException("Can't find dapp " + name));
+                                            .orElseThrow(()
+                                                    -> new ResourceNotFoundException("Can't find dapp " + name));
         return new ResponseEntity<>(dapp, HttpStatus.OK);
     }
 
     @PutMapping("/{name}")
     public ResponseEntity<Dapp> updateDapp(@PathVariable String name, Dapp dapp){
         Dapp savedDapp = dappRepository.findDappByNameIgnoreCase(name).
-                            orElseThrow(() -> new ResourceNotFoundException("No dapp with the name: " + name + " found"));
+                            orElseThrow(()
+                                    -> new ResourceNotFoundException("No dapp with the name: " + name + " found"));
 
         savedDapp.setName(dapp.getName());
         savedDapp.setUrl(dapp.getUrl());
@@ -52,7 +54,8 @@ public class DappController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> deleteDapp(@PathVariable("id") String id) {
             Dapp dapp = dappRepository.findById(id)
-                    .orElseThrow(() -> new ResourceNotFoundException("No dapp with the id: " + id + " found"));
+                    .orElseThrow(()
+                            -> new ResourceNotFoundException("No dapp with the id: " + id + " found"));
             dappRepository.delete(dapp);
         Map<String, Object> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
