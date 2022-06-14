@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface DappRepository extends MongoRepository<Dapp, String>{
-    Optional<Dapp> findDappByName(String name);
+    Optional<Dapp> findDappByNameIgnoreCase(String name);
 }

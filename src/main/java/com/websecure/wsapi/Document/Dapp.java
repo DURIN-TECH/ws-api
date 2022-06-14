@@ -17,7 +17,6 @@ public class Dapp {
     @Id
     private String id;
 
-    @Indexed(unique = true)
     private String name;
     private String url;
     private String discord;
